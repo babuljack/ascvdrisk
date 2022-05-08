@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ASCVD Risk Calculator</title>
+  
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+</head>
+<body>
+	<nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-success">
+		<div class="container">
+		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		  </button>
+		  <a class="navbar-brand" href="/">ASCVD Risk</a>
+		  <div class="navbar-collapse collapse" id="navbarSupportedContent">
+			
+	
+	  
+		  </div>
+		</div>
+	  </nav>
+
+	 <br>
+	 <br>
+	 <br> 
+
+
+	<div class="container">
+      <h3 class="text-center">Risk Calculation</h3>
+	<hr>
+	<div class="bg-light shadow p-2">
+		<form id="form" class="form-horizontal" autocomplete="off">
+		<fieldset>
+<div class="row">
+		<!-- Text input-->
+		<div class="form-group col-md-4">
+		  <label class="control-label" for="age">Age (years)</label>  
+		  <div class="">
+		  <input id="age" name="age" type="number" placeholder="40-79" class="form-control input-md" data-parsley-group="age-data" data-parsley-range="[40, 79]" required="required">
+		  </div>
+		  <span class="text-danger p-2 m-1 error-age"></span>
+		</div>
+
+		<!-- Multiple Radios -->
+		<div class="form-group col-md-4">
+		  <label class=" control-label" for="gender">Gender</label>
+		  <div class="">
+		  <div class="radio" id="gender">
+		    <label for="gender-0">
+		      <input type="radio" name="gender" id="gender-0" value="male" checked="checked">
+		      Male
+		    </label>
+			</div>
+		  <div class="radio">
+		    <label for="gender-1">
+		      <input type="radio" name="gender" id="gender-1" value="female">
+		      Female
+		    </label>
+			</div>
+		  </div>
+		</div>
+
+		<!-- Multiple Radios -->
+		<div class="form-group col-md-4">
+		  <label class=" control-label" for="race">Race</label>
+		  <div class="">
+		  <div class="radio" >
+		    <label for="race-0">
+		      <input type="radio" name="race" id="race-0" value="aa">
+		      African American
+		    </label>
+			</div>
+		  <div class="radio">
+		    <label for="race-1">
+		      <input type="radio" name="race" id="race-1" value="aa" checked="checked">
+		      Other
+		    </label>
+			</div>
+		  </div>
+		</div>
+
+		<!-- Text input-->
+		<div class="form-group col-md-4">
+		  <label class=" control-label" for="total-chol">Total cholesterol (mg/dL)</label>  
+		  <div class="">
+		  <input id="total-chol" name="total-chol" type="number" placeholder="130-320" class="form-control input-md" data-parsley-range="[130, 320]" required="required">
+		  <span class="text-danger p-2 m-1 error-total"></span>
+		  </div>
+		</div>
+
+		<!-- Text input-->
+		<div class="form-group col-md-4">
+		  <label class=" control-label" for="hdl">HDL cholesterol (mg/dL)</label>  
+		  <div class="">
+		  <input id="hdl" name="hdl" type="number" placeholder="20-100" class="form-control input-md" data-parsley-range="[20, 100]" required="required">
+		  <span class="text-danger p-2 m-1 error-hdl"></span>
+		  </div>
+		</div>
+
+		<!-- Text input-->
+		<div class="form-group col-md-4">
+		  <label class=" control-label" for="sbp">Systolic blood pressure (mmHg)</label>  
+		  <div class="">
+		  <input id="sbp" name="sbp" type="number" placeholder="90-200" class="form-control input-md" data-parsley-range="[90, 200]" required="required">
+		  <span class="text-danger p-2 m-1 error-systolic"></span>
+		  </div>
+		</div>
+
+		<!-- Text input-->
+	<!-- 	<div class="form-group col-md-4">
+		  <label class=" control-label" for="sbp">Diastolic blood pressure (mmHg)</label>  
+		  <div class="">
+		  <input id="dbp" name="dbp" type="number" placeholder="30-140" class="form-control input-md" data-parsley-range="[30, 140]" required="required">
+		  </div>
+		</div> -->
+
+		<!-- Multiple Radios -->
+		<div class="form-group col-md-4">
+			<label class=" control-label" for="treated">Treated for high blood pressure</label>
+			<div class="">
+			<div class="radio">
+			  <label for="treated-0">
+				<input type="radio" name="hypertensive" id="treated-0" value="0" checked="checked">
+				No
+			  </label>
+			  </div>
+			<div class="radio">
+			  <label for="treated-1">
+				<input type="radio" name="hypertensive" id="treated-1" value="1">
+				Yes
+			  </label>
+			  </div>
+			</div>
+		  </div>
+
+		<!-- Multiple Radios -->
+		<div class="form-group col-md-4">
+		  <label class=" control-label" for="diabetes">Diabetes</label>
+		  <div class="">
+		  <div class="radio">
+		    <label for="diabetes-0">
+		      <input type="radio" name="diabetes" id="diabetes-0" value="False" checked="checked">
+		      No
+		    </label>
+			</div>
+		  <div class="radio">
+		    <label for="diabetes-1">
+		      <input type="radio" name="diabetes" id="diabetes-1" value="True">
+		      Yes
+		    </label>
+			</div>
+		  </div>
+		</div>
+
+		<!-- Multiple Radios -->
+		<div class="form-group col-md-4">
+		  <label class=" control-label" for="smoker">Smoker</label>
+		  <div class="">
+		  <div class="radio" >
+		    <label for="smoker-0">
+		      <input type="radio" name="smoker" id="smoker-0" value="False" checked="checked">
+		      No
+		    </label>
+			</div>
+		  <div class="radio">
+		    <label for="smoker-1">
+		      <input type="radio" name="smoker" id="smoker-1" value="True">
+		      Yes
+		    </label>
+			</div>
+		  </div>
+		</div>
+		</fieldset>
+	</div>	
+	<div class="bt text-center d-block">
+		<button type="submit" class="btn mt-4 btn-danger">Calculate</button>
+	</div>
+	
+
+	</form>
+         
+	 <h3 class="result text-center my-1 mt-3" style="display:none;"> << Results >> </h3>
+
+    <marquee behavior="" direction="" class="mt-4 p-2 mark"> ASCVD Risk Enhancers may be used to inform treatment decision making and include family history of premature ASCVD with onset less than 55 years of age in a first degree male relative or less than 65 years of age in a first degree female relative, chronic kidney disease, metabolic syndrome, certain conditions specific to women (eg preeclampsia), inflammatory disease (especially rheumatoid arthritis, psoriasis, HIV), ethnicity (eg South Asian ancestry), persistently elevated LDL-C greater than 160 mg/dL, persistently elevated triglycerides of greater than 175 mg/dL, high-sensitivity C-reactive protein greater than 2 mg/L, coronary artery calcification score greater than 75th percentile for age, sex, and ethnicity, or ankle-brachial index less than 0.9. </marquee>	
+	<div class=" success p-3" style="display:none;">
+          <div class="details bg-warning  shadow pt-2 pb-1 px-1">
+             
+			<ul class="mt-1">
+				<li>
+					10 Years Risk : <span class="tenyear"></span>%
+				</li>
+				<li>
+					Life Time Risk : <span class="liferisk"></span>%
+				</li>
+				<li>
+					Optimal Lifetime: <span class="optimal"></span>%
+				</li>
+				<li>
+					Risk Reduction : <span class="riskreduction"></span>%
+				</li>
+
+			
+			</ul>
+			 
+		  </div>
+	
+		   <div class="desc">
+			   <h3>Notes and further reading</h3>
+			   <ul>
+				   <li>Moderate intensity statin may be atorvastatin 10mg, pravastatin 40mg, or simvastatin 20-40mg. High intensity statin may be atorvastatin 40mg-80mg</li>
+				   <li>AHA/ACC guidelines stress the importance of lifestyle modifications to lower cardiovascular disease risk in all patients. This includes eating a heart-healthy diet, regular aerobic exercises, maintenance of desirable body weight and avoidance of tobacco products</li>
+				   <li>
+					Before initiating statin therapy, clinicians and patients ought to engage in a discussion which considers addressing risk factors such as smoking and optimal lifestyle, the potential for ASCVD risk reduction benefits, adverse medication effects, drug-drug interactions, and patient preferences for treatment
+				   </li>
+				   <li>
+					ASCVD Risk Enhancers may be used to inform treatment decision making and include family history of premature ASCVD with onset less than 55 years of age in a first degree male relative or less than 65 years of age in a first degree female relative, chronic kidney disease, metabolic syndrome, certain conditions specific to women (eg preeclampsia), inflammatory disease (especially rheumatoid arthritis, psoriasis, HIV), ethnicity (eg South Asian ancestry), persistently elevated LDL-C greater than 160 mg/dL, persistently elevated triglycerides of greater than 175 mg/dL, high-sensitivity C-reactive protein greater than 2 mg/L, coronary artery calcification score greater than 75th percentile for age, sex, and ethnicity, or ankle-brachial index less than 0.9.
+				   </li>
+				</ul>
+		   </div>
+
+	</div>
+	<div class="text-center failed shadow m-3 p-3 bg-warning" style="display:none;"> 
+		 
+		<h3 class="">Something Wrong!</h3>
+		<li>Please Fill up the form Carefully.</li>
+	</div>
+
+
+	</div>
+
+ 
+
+
+</div>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+  </script>
+
+
+<script>
+
+$(document).ready(function () {
+
+$('.result').hide()
+$('.success').hide()
+$('.failed').hide()
+
+var error=false;
+
+//age
+$('#age').keyup(function(e){
+if(e.target.value < 40 & e.target.value > 0 ){
+	$('.error-age').show()
+	$('.error-age').text('Age must be larger than 39')
+	error=true;
+}else if(e.target.value > 79){
+	$('.error-age').show()
+	$('.error-age').text('Age must be less than 79')
+	error=true;
+}
+else{
+	$('.error-age').hide()
+	error=false;
+}
+
+})
+
+//rotal
+$('#total-chol').keyup(function(e){
+if(e.target.value < 130 & e.target.value > 0 ){
+	$('.error-total').show()
+	$('.error-total').text('TC must be larger than 130')
+	error=true;
+}else if(e.target.value > 320){
+	$('.error-total').show()
+	$('.error-total').text('TC must be less than 320')
+	error=true;
+}
+else{
+	$('.error-total').hide()
+	error=false;
+}
+
+})
+
+//hdl
+$('#hdl').keyup(function(e){
+if(e.target.value < 20 & e.target.value > 0 ){
+	$('.error-hdl').show()
+	$('.error-hdl').text('HDL must be larger than 20')
+	error=true;
+}else if(e.target.value > 100){
+	$('.error-hdl').show()
+	$('.error-hdl').text('HDL must be less than 100')
+	error=true;
+}
+else{
+	$('.error-hdl').hide()
+	error=false;
+}
+
+})
+
+//systolic
+$('#sbp').keyup(function(e){
+if(e.target.value < 90 & e.target.value > 0 ){
+	$('.error-systolic').show()
+	$('.error-systolic').text('systolic must be larger than 90')
+	error=true;
+}else if(e.target.value > 200){
+	$('.error-systolic').show()
+	$('.error-systolic').text('systolic must be less than 200')
+	error=true;
+}
+else{
+	$('.error-systolic').hide()
+	error=false;
+}
+
+})
+
+
+
+
+$('#form').submit(function(e){
+e.preventDefault()
+
+	const age=$('#age').val();
+    const Totalcholesterol=$('#total-chol').val();
+	const diabetes=$("input[name='diabetes']:checked").val();
+	const HDL=$('#hdl').val();
+	const Gender=$("input[name='gender']:checked").val();
+	const smoker=$("input[name='smoker']:checked").val();
+	const Systolic=$('#sbp').val();
+	const Race=$("input[name='race']:checked").val();
+	const hypertensive=$("input[name='hypertensive']:checked").val();
+
+
+    data={
+		'age':age,
+		'Totalcholesterol':Totalcholesterol,
+		'hypertensive':hypertensive,
+		'HDL':HDL,
+		'Gender':Gender,
+		'smoker':smoker,
+		'Systolic':Systolic,
+		'Race':Race,
+		'Diabetes':diabetes
+	};
+    
+	$('.result').show()
+
+	$.ajax({
+        url:'/calc',
+        dataType: "json",
+        data: data,
+        success: function (data) {
+		  
+           console.log(data.lifetime_risk)
+
+           $('.success').show()
+		   $('.failed').hide()
+           $('.mark').hide()
+		   $('.tenyear').text(data.ten_year)
+		   $('.liferisk').text(data.lifetime_risk)
+		   $('.optimal').text(data.optimal_lifetime)
+		   $('.riskreduction').text(data.risk_reduction)
+        },
+        error: function (request, status, error) {
+			$('.result').hide()
+            $('.success').hide()
+			$('.failed').show()
+		            
+           
+        }
+    }); 
+})
+
+
+
+
+
+})
+
+</script>
+
+
+</body>
+</html>
+
