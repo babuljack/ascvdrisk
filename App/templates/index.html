@@ -66,8 +66,8 @@
 		  <div class="">
 		  <div class="radio" >
 		    <label for="race-0">
-		      <input type="radio" name="race" id="race-0" value="aa">
-		      African American
+		      <input type="radio" name="race" id="race-0" value="white">
+		      African American(white)
 		    </label>
 			</div>
 		  <div class="radio">
@@ -139,13 +139,13 @@
 		  <div class="">
 		  <div class="radio">
 		    <label for="diabetes-0">
-		      <input type="radio" name="diabetes" id="diabetes-0" value="False" checked="checked">
+		      <input type="radio" name="diabetes" id="diabetes-0" value="0" checked="checked">
 		      No
 		    </label>
 			</div>
 		  <div class="radio">
 		    <label for="diabetes-1">
-		      <input type="radio" name="diabetes" id="diabetes-1" value="True">
+		      <input type="radio" name="diabetes" id="diabetes-1" value="1">
 		      Yes
 		    </label>
 			</div>
@@ -158,13 +158,13 @@
 		  <div class="">
 		  <div class="radio" >
 		    <label for="smoker-0">
-		      <input type="radio" name="smoker" id="smoker-0" value="False" checked="checked">
+		      <input type="radio" name="smoker" id="smoker-0" value="0" checked="checked">
 		      No
 		    </label>
 			</div>
 		  <div class="radio">
 		    <label for="smoker-1">
-		      <input type="radio" name="smoker" id="smoker-1" value="True">
+		      <input type="radio" name="smoker" id="smoker-1" value="1">
 		      Yes
 		    </label>
 			</div>
@@ -187,7 +187,7 @@
              
 			<ul class="mt-1">
 				<li>
-					10 Years Risk : <span class="tenyear"></span>%
+					10 Years Score : <span class="tenyear"></span>
 				</li>
 				<li>
 					Life Time Risk : <span class="liferisk"></span>%
@@ -196,7 +196,7 @@
 					Optimal Lifetime: <span class="optimal"></span>%
 				</li>
 				<li>
-					Risk Reduction : <span class="riskreduction"></span>%
+					10 Year Risk Reduction : <span class="riskreduction"></span>%
 				</li>
 
 			
@@ -354,6 +354,7 @@ e.preventDefault()
 		'Race':Race,
 		'Diabetes':diabetes
 	};
+
     
 	$('.result').show()
 
@@ -362,8 +363,7 @@ e.preventDefault()
         dataType: "json",
         data: data,
         success: function (data) {
-		  
-           console.log(data.lifetime_risk)
+		
 
            $('.success').show()
 		   $('.failed').hide()

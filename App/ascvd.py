@@ -18,7 +18,7 @@ from math import *
 class ASCVD:
 
     def __init__(self, age, gender, race, total_cholesterol, hdl, systolic,
-                 hypertensive=False, smoker=False, diabetic=False):
+                 hypertensive, smoker, diabetic):
 
         if age < 40 or age > 79:
             raise ValueError('Invalid age: ', age, ' - Age must be between 40 and 79')

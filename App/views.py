@@ -11,18 +11,18 @@ def Calculate(request):
     
     age=int(request.GET.get('age'));
     Totalcholesterol=int(request.GET.get('Totalcholesterol'));
-    Diabetes=bool(request.GET.get('Diabetes'));
+    Diabetes=int(request.GET.get('Diabetes'));
     hdl=int(request.GET.get('HDL'));
     Gender=request.GET.get('Gender');
-    smoker=bool(request.GET.get('smoker'));
+    smoker=int(request.GET.get('smoker'));
     Systolic=int(request.GET.get('Systolic'));
-    Race=bool(request.GET.get('Race'));
-    hypertensive=bool(request.GET.get('hypertensive'));
+    Race=request.GET.get('Race');
+    hypertensive=int(request.GET.get('hypertensive'));
     
     ascvd = ASCVD(
         age=age,
         diabetic=Diabetes,
-        smoker=smoker,
+        smoker=1,
         hypertensive=hypertensive,
         systolic=Systolic,
         gender=Gender,
@@ -34,7 +34,7 @@ def Calculate(request):
     ten_year=ascvd.compute_ten_year_score()
     lifetime_risk=ascvd.compute_lifetime_risk()
     optimal_lifetime=ascvd.compute_optimal_lifetime()
-    risk_reduction=ascvd.compute_ten_year_risk_reduction(quit_smoking=True, statin_therapy=True)
+    risk_reduction=ascvd.compute_ten_year_risk_reduction(quit_smoking=smoker, statin_therapy=True)
     data={
         'ten_year':ten_year,
         'lifetime_risk':lifetime_risk,
