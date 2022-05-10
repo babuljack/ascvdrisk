@@ -46,7 +46,9 @@
             transform: rotate(360deg);
         }
     }
-
+.details:hover{
+background-color: pink !important;
+}
 </style>
 </head>
 <body>
@@ -256,7 +258,7 @@
 	</div>	
 
 	<div class="bt text-center d-block">
-		<button type="submit" class="btn mt-4 btn-danger">Calculate</button>
+		<button type="submit" class="btn mt-4 btn-success">Calculate</button>
 	</div>
 	
 
@@ -265,13 +267,13 @@
 <div id="loader" class="lds-dual-ring hidden overlay mt-2 "></div>
 
 <div class="click-result">
-	 <h3 class="result text-center my-1 mt-3" style="display:none;"> << Results >> </h3>
-
+	 <h3 class="result text-center my-1 mt-3" style="display:none;"> || Results || </h3>
+<hr>
 	 <p class="risk-alert bg-danger mt-2 text-white text text-center p-3" style="display: none">You are in critical situation !!.</p>
 
     <marquee behavior="" direction="" class="mt-4 p-2 mark"> ASCVD Risk Enhancers may be used to inform treatment decision making and include family history of premature ASCVD with onset less than 55 years of age in a first degree male relative or less than 65 years of age in a first degree female relative, chronic kidney disease, metabolic syndrome, certain conditions specific to women (eg preeclampsia), inflammatory disease (especially rheumatoid arthritis, psoriasis, HIV), ethnicity (eg South Asian ancestry), persistently elevated LDL-C greater than 160 mg/dL, persistently elevated triglycerides of greater than 175 mg/dL, high-sensitivity C-reactive protein greater than 2 mg/L, coronary artery calcification score greater than 75th percentile for age, sex, and ethnicity, or ankle-brachial index less than 0.9. </marquee>	
 	<div class=" success p-3" style="display:none;">
-          <div class="details bg-warning  shadow pt-2 pb-1 px-1 effect" data-tilt data-tilt-max="50" data-tilt-speed="400" data-tilt-perspective="500">
+          <div class="details bg-warning  shadow pt-2 pb-1 px-1 effect" data-tilt data-tilt-max="50" data-tilt-speed="400" data-tilt-perspective="500" >
              
 			<ul class="mt-1 " >
 			
@@ -294,7 +296,7 @@
 			 
 		  </div>
 	
-		   <div class="desc">
+		   <div class="desc p-2">
 			   <h3>Notes and further reading</h3>
 			   <ul>
 				   <li>Moderate intensity statin may be atorvastatin 10mg, pravastatin 40mg, or simvastatin 20-40mg. High intensity statin may be atorvastatin 40mg-80mg</li>
