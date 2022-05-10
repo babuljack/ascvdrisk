@@ -3,7 +3,7 @@ ascvd risk calculator
 
 # OverView
 
-![latest_asvcd](https://user-images.githubusercontent.com/96766836/167357558-f0909b15-d892-4b8f-a92e-a8ae1fc83da5.png) <br>
+![update_asvcd](https://user-images.githubusercontent.com/96766836/167650430-6aa13e4e-08f4-45b8-a1a7-0d804ef25158.png) <br>
 
 # To clone this project .
 1.Open Terminal and type: git clone https://github.com/babuljack/ascvdrisk.git <br>
