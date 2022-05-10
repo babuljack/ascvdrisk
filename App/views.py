@@ -1,7 +1,6 @@
 from django.shortcuts import render,HttpResponse
 from django.http import JsonResponse
 from .ascvd import *
-import requests
 # Create your views here.
 
 def Home(request):
