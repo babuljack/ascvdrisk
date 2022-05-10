@@ -5,6 +5,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
   <style>
+
     .lds-dual-ring.hidden {
         display: none;
     }
@@ -72,7 +73,7 @@
 	<hr>
 	
 	<div class="bg-light shadow p-2">
-		<form id="form" class="form-horizontal" autocomplete="off">
+		<form id="form" class="form-horizontal" autocomplete="off"  >
 		
 <div class="row">
 		<!-- Text input-->
@@ -84,6 +85,34 @@
 		  <span class="text-danger p-2 m-1 error-age"></span>
 		</div>
 
+		<!-- Text input-->
+		<div class="form-group col-md-4">
+			<label class=" control-label" for="hdl">HDL cholesterol (mg/dL)</label>  
+			<div class="">
+			<input id="hdl" name="hdl" type="number" placeholder="20-100" class="form-control input-md" data-parsley-range="[20, 100]" required="required">
+			<span class="text-danger p-2 m-1 error-hdl"></span>
+			</div>
+			</div>
+
+		<!-- Text input-->
+		<div class="form-group col-md-4">
+			<label class=" control-label" for="total-chol">Total cholesterol (mg/dL)</label>  
+			<div class="">
+			<input id="total-chol" name="total-chol" type="number" placeholder="130-320" class="form-control input-md" data-parsley-range="[130, 320]" required="required">
+			<span class="text-danger p-2 m-1 error-total"></span>
+			</div>
+		  </div>
+  
+  
+  
+		  <!-- Text input-->
+		  <div class="form-group col-md-4">
+			<label class=" control-label" for="sbp">Systolic blood pressure (mmHg)</label>  
+			<div class="">
+			<input id="sbp" name="sbp" type="number" placeholder="90-200" class="form-control input-md" data-parsley-range="[90, 200]" required="required">
+			<span class="text-danger p-2 m-1 error-systolic"></span>
+			</div>
+		  </div>			
 		<!-- Multiple Radios -->
 		<div class="form-group col-md-4">
 		  <label class=" control-label" for="gender">Gender</label>
@@ -122,41 +151,7 @@
 		  </div>
 		</div>
 
-		<!-- Text input-->
-		<div class="form-group col-md-4">
-		  <label class=" control-label" for="total-chol">Total cholesterol (mg/dL)</label>  
-		  <div class="">
-		  <input id="total-chol" name="total-chol" type="number" placeholder="130-320" class="form-control input-md" data-parsley-range="[130, 320]" required="required">
-		  <span class="text-danger p-2 m-1 error-total"></span>
-		  </div>
-		</div>
 
-		<!-- Text input-->
-		<div class="form-group col-md-4">
-		  <label class=" control-label" for="hdl">HDL cholesterol (mg/dL)</label>  
-		  <div class="">
-		  <input id="hdl" name="hdl" type="number" placeholder="20-100" class="form-control input-md" data-parsley-range="[20, 100]" required="required">
-		  <span class="text-danger p-2 m-1 error-hdl"></span>
-		  </div>
-		</div>
-
-		<!-- Text input-->
-		<div class="form-group col-md-4">
-		  <label class=" control-label" for="sbp">Systolic blood pressure (mmHg)</label>  
-		  <div class="">
-		  <input id="sbp" name="sbp" type="number" placeholder="90-200" class="form-control input-md" data-parsley-range="[90, 200]" required="required">
-		  <span class="text-danger p-2 m-1 error-systolic"></span>
-		  </div>
-		</div>
-
-		<!-- Text input-->
-<!-- 		<div class="form-group col-md-4">
-		  <label class=" control-label" for="sbp">Diastolic blood pressure (mmHg)</label>  
-		  <div class="">
-		  <input id="dbp" name="dbp" type="number" placeholder="30-140" class="form-control input-md" data-parsley-range="[30, 140]" required="required">
-		  </div>
-		</div>
- -->
 		<!-- Multiple Radios -->
 		<div class="form-group col-md-4">
 			<label class=" control-label" for="treated">Treated for high blood pressure</label>
@@ -181,7 +176,7 @@
 <!-- new section -->
 		  		<!-- Multiple Radios -->
 		<div class="form-group col-md-4">
-			<label class=" control-label" for="statin">statin therapy</label>
+			<label class=" control-label" for="statin">Statin Therapy</label>
 			<div class="">
 			<div class="radio">
 			  <label for="statin-0">
@@ -240,7 +235,7 @@
 
 		<!-- Multiple Radios -->
 		<div class="form-group col-md-4">
-		  <label class=" control-label" for="smoker">Smoker</label>
+		  <label class=" control-label" for="smoker">Smoking</label>
 		  <div class="">
 		  <div class="radio" >
 		    <label for="smoker-0">
@@ -276,9 +271,9 @@
 
     <marquee behavior="" direction="" class="mt-4 p-2 mark"> ASCVD Risk Enhancers may be used to inform treatment decision making and include family history of premature ASCVD with onset less than 55 years of age in a first degree male relative or less than 65 years of age in a first degree female relative, chronic kidney disease, metabolic syndrome, certain conditions specific to women (eg preeclampsia), inflammatory disease (especially rheumatoid arthritis, psoriasis, HIV), ethnicity (eg South Asian ancestry), persistently elevated LDL-C greater than 160 mg/dL, persistently elevated triglycerides of greater than 175 mg/dL, high-sensitivity C-reactive protein greater than 2 mg/L, coronary artery calcification score greater than 75th percentile for age, sex, and ethnicity, or ankle-brachial index less than 0.9. </marquee>	
 	<div class=" success p-3" style="display:none;">
-          <div class="details bg-warning  shadow pt-2 pb-1 px-1">
+          <div class="details bg-warning  shadow pt-2 pb-1 px-1 effect" data-tilt data-tilt-max="50" data-tilt-speed="400" data-tilt-perspective="500">
              
-			<ul class="mt-1">
+			<ul class="mt-1 " >
 			
 				<li>
 					10 Years Score : <span class="tenyear"></span>%
@@ -337,10 +332,15 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
     integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
   </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tilt.js/1.2.1/tilt.jquery.min.js"></script>
 
-
+<script type="text/javascript">
+	VanillaTilt.init(document.querySelector(".effect"), {
+		max: 25,
+		speed: 400
+	});
+</script>
 <script>
-
 $(document).ready(function () {
 
 $('.result').hide()

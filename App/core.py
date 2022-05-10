@@ -217,7 +217,7 @@ class ASCVD:
         t_diabetic = self.diabetic
         t_hypertensive = self.hypertensive
 
-        #best case 
+        #best case and fixed for expected value
         self.systolic = 90
         self.total_cholesterol = 130
         self.hdl = 100
