@@ -2,9 +2,51 @@
 <html>
 <head>
   <title>ASCVD Risk Calculator</title>
-  
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
+  <style>
+    .lds-dual-ring.hidden {
+        display: none;
+    }
+    /*Add an overlay to the entire page blocking any further presses to buttons or other elements.*/
+    .overlay {
+        position: fixed;
+        bottom:0;
+        left: 47%;
+        width: 100%;
+        height: 100vh;
+        z-index: 999;
+        opacity: 1;
+        transition: all 0.5s;
+    }
+    
+    /*Spinner Styles*/
+    .lds-dual-ring {
+        display: inline-block;
+        width: 80px;
+        height: 80px;
+    }
+    .lds-dual-ring:after {
+        content: " ";
+        display: block;
+        width: 64px;
+        height: 64px;
+        margin: 5% auto;
+        border-radius: 50%;
+        border: 6px solid red;
+        border-color: black transparent black transparent;
+        animation: lds-dual-ring 1.2s linear infinite;
+    }
+    @keyframes lds-dual-ring {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+</style>
 </head>
 <body>
 	<nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-success">
@@ -25,12 +67,13 @@
 	 <br> 
 
 
-	<div class="container">
+<div class="container">
       <h3 class="text-center">Risk Calculation</h3>
 	<hr>
+	
 	<div class="bg-light shadow p-2">
 		<form id="form" class="form-horizontal" autocomplete="off">
-		<fieldset>
+		
 <div class="row">
 		<!-- Text input-->
 		<div class="form-group col-md-4">
@@ -135,24 +178,6 @@
 
 
 
-<!-- 		  <div class="form-group col-md-4">
-			<label class=" control-label" for="blood">blood pressure Medication</label>
-			<div class="">
-			<div class="radio">
-			  <label for="blood-0">
-				<input type="radio" name="blood" id="blood-0" value="0" checked="checked">
-				No
-			  </label>
-			  </div>
-			<div class="radio">
-			  <label for="blood-1">
-				<input type="radio" name="blood" id="blood-1" value="1">
-				Yes
-			  </label>
-			  </div>
-			</div>
-		  </div> -->
-
 <!-- new section -->
 		  		<!-- Multiple Radios -->
 		<div class="form-group col-md-4">
@@ -230,17 +255,24 @@
 		    </label>
 			</div>
 		  </div>
-		</div>
-		</fieldset>
+	</div>
+</div>
+	
 	</div>	
+
 	<div class="bt text-center d-block">
 		<button type="submit" class="btn mt-4 btn-danger">Calculate</button>
 	</div>
 	
 
-	</form>
-         <p class="risk-alert bg-danger mt-2 text-white text text-center p-3" style="display: none">You are in critical situation !!.</p>
+</form>
+
+<div id="loader" class="lds-dual-ring hidden overlay mt-2 "></div>
+
+<div class="click-result">
 	 <h3 class="result text-center my-1 mt-3" style="display:none;"> << Results >> </h3>
+
+	 <p class="risk-alert bg-danger mt-2 text-white text text-center p-3" style="display: none">You are in critical situation !!.</p>
 
     <marquee behavior="" direction="" class="mt-4 p-2 mark"> ASCVD Risk Enhancers may be used to inform treatment decision making and include family history of premature ASCVD with onset less than 55 years of age in a first degree male relative or less than 65 years of age in a first degree female relative, chronic kidney disease, metabolic syndrome, certain conditions specific to women (eg preeclampsia), inflammatory disease (especially rheumatoid arthritis, psoriasis, HIV), ethnicity (eg South Asian ancestry), persistently elevated LDL-C greater than 160 mg/dL, persistently elevated triglycerides of greater than 175 mg/dL, high-sensitivity C-reactive protein greater than 2 mg/L, coronary artery calcification score greater than 75th percentile for age, sex, and ethnicity, or ankle-brachial index less than 0.9. </marquee>	
 	<div class=" success p-3" style="display:none;">
@@ -289,7 +321,7 @@
 	</div>
 
 
-	</div>
+</div>
 
  
 
@@ -431,9 +463,15 @@ e.preventDefault()
         url:'/calc',
 		data:data,
         dataType: "json",
-        success: function (data) {
-		
+		beforeSend: function (){
+			
+            $('#loader').show()
+			
 
+		},
+        success: function (data) {
+		   $('#loader').hide()
+		   $('.click-result').show()
            $('.success').show()
 		   $('.failed').hide()
            $('.mark').hide()
@@ -461,6 +499,8 @@ e.preventDefault()
 		   }
         },
         error: function (request, status, error) {
+			$('#loader').hide()
+			$('.click-result').show()
 			$('.result').hide()
             $('.success').hide()
 			$('.failed').show()
