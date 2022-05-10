@@ -107,13 +107,13 @@
 		</div>
 
 		<!-- Text input-->
-	<!-- 	<div class="form-group col-md-4">
+<!-- 		<div class="form-group col-md-4">
 		  <label class=" control-label" for="sbp">Diastolic blood pressure (mmHg)</label>  
 		  <div class="">
 		  <input id="dbp" name="dbp" type="number" placeholder="30-140" class="form-control input-md" data-parsley-range="[30, 140]" required="required">
 		  </div>
-		</div> -->
-
+		</div>
+ -->
 		<!-- Multiple Radios -->
 		<div class="form-group col-md-4">
 			<label class=" control-label" for="treated">Treated for high blood pressure</label>
@@ -132,6 +132,67 @@
 			  </div>
 			</div>
 		  </div>
+
+
+
+<!-- 		  <div class="form-group col-md-4">
+			<label class=" control-label" for="blood">blood pressure Medication</label>
+			<div class="">
+			<div class="radio">
+			  <label for="blood-0">
+				<input type="radio" name="blood" id="blood-0" value="0" checked="checked">
+				No
+			  </label>
+			  </div>
+			<div class="radio">
+			  <label for="blood-1">
+				<input type="radio" name="blood" id="blood-1" value="1">
+				Yes
+			  </label>
+			  </div>
+			</div>
+		  </div> -->
+
+<!-- new section -->
+		  		<!-- Multiple Radios -->
+		<div class="form-group col-md-4">
+			<label class=" control-label" for="statin">statin therapy</label>
+			<div class="">
+			<div class="radio">
+			  <label for="statin-0">
+				<input type="radio" name="statin" id="statin-0" value="0" checked="checked">
+				No
+			  </label>
+			  </div>
+			<div class="radio">
+			  <label for="statin-1">
+				<input type="radio" name="statin" id="statin-1" value="1" >
+				Yes
+			  </label>
+			  </div>
+			</div>
+		  </div>
+
+		  		<!-- Multiple Radios -->
+		<div class="form-group col-md-4">
+			<label class=" control-label" for="aspirin">Aspirin</label>
+			<div class="">
+			<div class="radio">
+			  <label for="aspirin-0">
+				<input type="radio" name="asprin" id="aspirin-0" value="0" checked="checked">
+				No
+			  </label>
+			  </div>
+			<div class="radio">
+			  <label for="aspirin-1">
+				<input type="radio" name="asprin" id="aspirin-1" value="1">
+				Yes
+			  </label>
+			  </div>
+			</div>
+		  </div>
+
+<!-- new end -->
 
 		<!-- Multiple Radios -->
 		<div class="form-group col-md-4">
@@ -178,7 +239,7 @@
 	
 
 	</form>
-         
+         <p class="risk-alert bg-danger mt-2 text-white text text-center p-3" style="display: none">You are in critical situation !!.</p>
 	 <h3 class="result text-center my-1 mt-3" style="display:none;"> << Results >> </h3>
 
     <marquee behavior="" direction="" class="mt-4 p-2 mark"> ASCVD Risk Enhancers may be used to inform treatment decision making and include family history of premature ASCVD with onset less than 55 years of age in a first degree male relative or less than 65 years of age in a first degree female relative, chronic kidney disease, metabolic syndrome, certain conditions specific to women (eg preeclampsia), inflammatory disease (especially rheumatoid arthritis, psoriasis, HIV), ethnicity (eg South Asian ancestry), persistently elevated LDL-C greater than 160 mg/dL, persistently elevated triglycerides of greater than 175 mg/dL, high-sensitivity C-reactive protein greater than 2 mg/L, coronary artery calcification score greater than 75th percentile for age, sex, and ethnicity, or ankle-brachial index less than 0.9. </marquee>	
@@ -186,18 +247,20 @@
           <div class="details bg-warning  shadow pt-2 pb-1 px-1">
              
 			<ul class="mt-1">
+			
 				<li>
-					10 Years Score : <span class="tenyear"></span>
+					10 Years Score : <span class="tenyear"></span>%
 				</li>
 				<li>
-					Life Time Risk : <span class="liferisk"></span>%
+					Life Time Risk : <span class="liferisk"></span>
 				</li>
 				<li>
-					Optimal Lifetime: <span class="optimal"></span>%
+					10 Years Risk Reduction: <span class="riskreduction"></span>%
 				</li>
 				<li>
-					10 Year Risk Reduction : <span class="riskreduction"></span>%
+					Expected Lifetime: <span class="optimal"></span>%
 				</li>
+				
 
 			
 			</ul>
@@ -341,6 +404,9 @@ e.preventDefault()
 	const Systolic=$('#sbp').val();
 	const Race=$("input[name='race']:checked").val();
 	const hypertensive=$("input[name='hypertensive']:checked").val();
+	const blood=$("input[name='blood']:checked").val();
+	const statin=$("input[name='statin']:checked").val();
+	const aspirin=$("input[name='asprin']:checked").val();
 
 
     data={
@@ -352,16 +418,19 @@ e.preventDefault()
 		'smoker':smoker,
 		'Systolic':Systolic,
 		'Race':Race,
-		'Diabetes':diabetes
+		'Diabetes':diabetes,
+		'blood':blood,
+		'statin':statin,
+		'aspirin':aspirin,
 	};
 
-    
+   console.log(data) 
 	$('.result').show()
 
 	$.ajax({
         url:'/calc',
+		data:data,
         dataType: "json",
-        data: data,
         success: function (data) {
 		
 
@@ -369,9 +438,27 @@ e.preventDefault()
 		   $('.failed').hide()
            $('.mark').hide()
 		   $('.tenyear').text(data.ten_year)
-		   $('.liferisk').text(data.lifetime_risk)
-		   $('.optimal').text(data.optimal_lifetime)
 		   $('.riskreduction').text(data.risk_reduction)
+		   if(data.lifetime_risk == 0){
+
+			  $('.liferisk').text('for life risk age have to under 60')
+			  $('.risk-alert').hide();
+		   }
+		   else{
+			  $('.liferisk').text(data.lifetime_risk+'%')
+			  if (data.lifetime_risk > 49){
+                       
+				   $('.risk-alert').show();
+			  }else{
+				$('.risk-alert').hide()
+			  }
+		   }
+
+		   if(data.optimal_lifetime == 0){
+			$('.optimal').text('5%')
+		   }else{
+			$('.optimal').text(data.optimal_lifetime)
+		   }
         },
         error: function (request, status, error) {
 			$('.result').hide()

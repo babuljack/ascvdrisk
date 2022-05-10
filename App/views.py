@@ -1,14 +1,14 @@
 from django.shortcuts import render,HttpResponse
 from django.http import JsonResponse
 from .ascvd import *
+import requests
 # Create your views here.
 
 def Home(request):
     return render(request,'index.html')
 
-
-def Calculate(request):
     
+def Calculate(request):    
     age=int(request.GET.get('age'));
     Totalcholesterol=int(request.GET.get('Totalcholesterol'));
     Diabetes=int(request.GET.get('Diabetes'));
@@ -18,11 +18,13 @@ def Calculate(request):
     Systolic=int(request.GET.get('Systolic'));
     Race=request.GET.get('Race');
     hypertensive=int(request.GET.get('hypertensive'));
-    
+    statin=int(request.GET.get('statin'));
+    aspirin=int(request.GET.get('aspirin'));
+    print(hypertensive)
     ascvd = ASCVD(
         age=age,
         diabetic=Diabetes,
-        smoker=1,
+        smoker=smoker,
         hypertensive=hypertensive,
         systolic=Systolic,
         gender=Gender,
@@ -34,7 +36,7 @@ def Calculate(request):
     ten_year=ascvd.compute_ten_year_score()
     lifetime_risk=ascvd.compute_lifetime_risk()
     optimal_lifetime=ascvd.compute_optimal_lifetime()
-    risk_reduction=ascvd.compute_ten_year_risk_reduction(quit_smoking=smoker, statin_therapy=True)
+    risk_reduction=ascvd.compute_ten_year_risk_reduction(quit_smoking=smoker,statin_therapy=statin,bp_meds=hypertensive, aspirin=aspirin)
     data={
         'ten_year':ten_year,
         'lifetime_risk':lifetime_risk,
@@ -44,4 +46,5 @@ def Calculate(request):
     }                               
                                         
 
-    return JsonResponse(data)    
+    return JsonResponse(data)  
+

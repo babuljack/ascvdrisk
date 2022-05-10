@@ -30,7 +30,7 @@ class ASCVD:
             raise ValueError("Invalid value: ", hdl, ' - HDL must be between 20 and 100')
 
         if systolic < 90 or systolic > 200:
-            raise ValueError("Invalid value: ", systolic, ' - Systolic must be between 90 and 200')
+            raise ValueError("Invalid value: ", systolic, ' - Systolic must be between 90 and 200')   
 
         self.age = age
         self.gender = gender
@@ -41,7 +41,7 @@ class ASCVD:
         self.hypertensive = hypertensive
         self.smoker = smoker
         self.diabetic = diabetic
-
+ 
     whom = {
         True: {
             True: 'aa_male',
@@ -181,7 +181,7 @@ class ASCVD:
         return ascvd_risk
 
     def compute_ten_year_risk_reduction(
-            self, quit_smoking = False, statin_therapy= False, bp_meds = False, aspirin = False):
+            self, quit_smoking, statin_therapy, bp_meds, aspirin):
         base_score = self.compute_ten_year_score()
         optimal_score = self.compute_optimal_ten_year()
         total_reduced_score = base_score
@@ -209,7 +209,7 @@ class ASCVD:
     def compute_optimal_lifetime(self):
         return self.__compute_optimal(self.compute_lifetime_risk)
 
-    def __compute_optimal(self, fn):
+    def __compute_optimal(self, fn ):
         t_systolic = self.systolic
         t_total_cholesterol = self.total_cholesterol
         t_hdl = self.hdl
@@ -217,6 +217,7 @@ class ASCVD:
         t_diabetic = self.diabetic
         t_hypertensive = self.hypertensive
 
+        #best case 
         self.systolic = 90
         self.total_cholesterol = 130
         self.hdl = 100
