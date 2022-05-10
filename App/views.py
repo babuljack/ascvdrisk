@@ -2,7 +2,7 @@ from django.shortcuts import render,HttpResponse
 from django.http import JsonResponse
 from .ascvd import *
 
-# Create your views here now.
+# Create your views here right now.
 
 def Home(request):
     return render(request,'index.html')
