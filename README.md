@@ -5,6 +5,10 @@ ascvd risk calculator
 
 ![update_asvcd](https://user-images.githubusercontent.com/96766836/167650430-6aa13e4e-08f4-45b8-a1a7-0d804ef25158.png) <br>
 
+# see live on heroku:
+
+link: https://ascvd.herokuapp.com/
+
 # To clone this project .
 1.Open Terminal and type: git clone https://github.com/babuljack/ascvdrisk.git <br>
 2.cd ascvdrisk <br>
