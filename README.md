@@ -3,7 +3,7 @@ ascvd risk calculator
 
 # OverView
 
-![update_asvcd](https://user-images.githubusercontent.com/96766836/167650430-6aa13e4e-08f4-45b8-a1a7-0d804ef25158.png) <br>
+![ascvdrisk](https://user-images.githubusercontent.com/96766836/167841960-70dc7e47-9ae1-4f27-adc1-97cb9271ea29.png) <br>
 
 # see live on heroku:
 
